@@ -1,0 +1,19 @@
+{
+  "name": "twitter-audio",
+  "version": "1.0.0",
+  "description": "",
+  "main": "src/index.js",
+  "scripts": {
+    "dev": "nodemon server.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "nodemon": "^1.17.5"
+  },
+  "dependencies": {
+    "dotenv": "^6.0.0",
+    "socket.io": "^2.1.1",
+    "twitter-lite": "^0.5.0"
+  }
+}
