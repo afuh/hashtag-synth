@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <link rel="shortcut icon" href="https://raw.githubusercontent.com/afuh/afuh.github.io/master/src/images/favicon.png" type="image/png">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title><%= htmlWebpackPlugin.options.title %></title>
+  </head>
+  <body>
+    <style>
+      * {
+        margin: 0;
+        box-sizing: border-box;
+        -webkit-user-select: none;
+      }
+      .wrapper {
+        font-family: -apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif;
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background: #333;
+        position: relative;
+      }
+      .wrapper code {
+        padding: 0;
+        color: whitesmoke;
+        font-weight: 400;
+        font-size: 30px;
+        max-width: 75%;
+      }
+      .wrapper span {
+        position: absolute;
+        top: 30%;
+      }
+      .wrapper .image {
+        border-radius: 50%;
+      }
+      ul {
+        position: absolute;
+        z-index: 2;
+        padding: 0;
+        max-height: 100vh;
+        overflow: hidden;
+      }
+      ul li {
+        color: white;
+      }
+      footer {
+        position: absolute;
+        bottom: 0;
+        right: 0;
+        color: #555;
+        padding: 4px
+      }
+    </style>
+
+    <code>
+      <ul class="user-list"></ul>
+    </code>
+    <div class="wrapper">
+      <code class="tweet"></code>
+      <span class="hash"></span>
+      <footer class="footer">If nothing happens, try Chrome</footer>
+    </div>
+  </body>
+</html>
