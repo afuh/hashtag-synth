@@ -1,9 +1,12 @@
 require('dotenv').config()
+
 const Twitter = require('twitter-lite')
+const { hashtags } = require('./config')
 
 const PORT = 8085
 const server = require('http').createServer()
 const io = require('socket.io')(server)
+
 server.listen(PORT, (err) => {
   if (err) throw err
   console.log(`listening on port ${PORT}`)
@@ -16,9 +19,7 @@ const client = new Twitter({
   access_token_secret: process.env.ACCESS_SECRET
 })
 
-const track = "#refugees, #refugee, #RefugeeWeek2018, #RefugeeWeek, #RefugeeDay, #Flüchtlinge, #migrants, #fuckAFD, #noafd, #equality, #AsylumSeekers, #refugiado, #refugiados, #Rèfugiés, #peace, #paz, #spreadlove, #stophate"
-
-client.stream('statuses/filter', { track })
+client.stream('statuses/filter', { track: hashtags.join() })
   .on("start", () => console.log("start twitter stream"))
   .on("data", data => io.emit('tweet', data))
   .on("ping", () => console.log("ping"))
