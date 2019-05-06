@@ -1,12 +1,13 @@
 {
-  "name": "twitter-audio",
+  "name": "hashtag-synth",
   "version": "1.0.0",
   "description": "",
   "main": "src/index.js",
   "scripts": {
     "dev": "webpack-dev-server --mode=development",
-    "build": "rimraf dist/** && webpack --mode=production --progress",
-    "deploy": "npm run build && surge dist dci-audio.surge.sh"
+    "build": "webpack --mode=production --progress",
+    "prebuild": "rimraf dist",
+    "deploy": "surge dist https://hashtag-synth.surge.sh"
   },
   "author": "",
   "license": "ISC",
@@ -32,6 +33,7 @@
   "dependencies": {
     "dotenv": "^6.0.0",
     "socket.io": "^2.1.1",
-    "twitter-lite": "^0.5.0"
+    "twitter-lite": "^0.5.0",
+    "unmute": "^0.1.3"
   }
 }
