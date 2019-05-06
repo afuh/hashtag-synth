@@ -35,9 +35,13 @@ export default class HashSynth {
     return note
   }
   handleDom(data, note){
-    this.dom.tweet.innerHTML = `<img class='image' src=${data.user.profile_image_url}> <span>${data.text}</span>`
+    const imageURL = data.user.profile_image_url.replace(/^http:\/\//i, 'https://')
+
+    this.dom.tweet.innerHTML = `<img class='image' src=${imageURL}> <span>${data.text}</span>`
     this.dom.users.insertAdjacentHTML("afterbegin", `
-      <li>${note + `${note.length === 2 ? "  \xa0|" : " |"}`} ${data.user.name} ${data.user.location ? "- " + data.user.location : ''}</li>
+      <li>${note + `${note.length === 2 ? "  \xa0|" : " |"}`}
+        ${data.user.name} ${data.user.location ? "- " + data.user.location : ''}
+      </li>
     `)
   }
 }

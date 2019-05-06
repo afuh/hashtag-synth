@@ -14,7 +14,7 @@ Tone.Transport.bpm.value = 50
 Tone.Transport.start()
 
 new HashSynth ({
-  url: 'http://beathoven.axelfuhrmann.com',
+  url: 'https://beathoven.axelfuhrmann.com',
   attack,
   hashtags
 }).init()

@@ -7,7 +7,7 @@
     "dev": "webpack-dev-server --mode=development",
     "build": "webpack --mode=production --progress",
     "prebuild": "rimraf dist",
-    "deploy": "surge dist hashtag-synth.surge.sh"
+    "deploy": "surge dist https://hashtag-synth.surge.sh"
   },
   "author": "",
   "license": "ISC",
