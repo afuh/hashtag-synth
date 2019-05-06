@@ -19,14 +19,7 @@ new HashSynth ({
   hashtags
 }).init()
 
-UnmuteButton({
-  mute: true
-})
-  .on('unmute', () => {
-    background.connect(limit)
-    melody.connect(limit)
-  })
-  .on('mute', () => {
-    background.disconnect(limit)
-    melody.disconnect(limit)
-  })
+background.connect(limit)
+melody.connect(limit)
+
+UnmuteButton()
