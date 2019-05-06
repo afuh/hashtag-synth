@@ -33,7 +33,7 @@ module.exports = {
   },
   plugins: [
     new HtmlWebpackPlugin({
-      title: 'Twitter audio',
+      title: 'Hashtag synth',
       minify: {
         collapseWhitespace: true
       },

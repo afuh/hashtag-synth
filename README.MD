@@ -1,3 +1,3 @@
-# Hashtag to music
+# Hashtag Synth
 
-Idea presented at the [DCI Hackathon](https://digitalcareerinstitute.org/). 
+Idea presented at the [DCI Hackathon](https://digitalcareerinstitute.org/).
