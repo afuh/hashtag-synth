@@ -7,7 +7,7 @@ const PORT = 8085
 const server = require('http').createServer()
 const io = require('socket.io')(server)
 
-server.listen(PORT, (err) => {
+server.listen(PORT, err => {
   if (err) throw err
   console.log(`listening on port ${PORT}`)
 })
