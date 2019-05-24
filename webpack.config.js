@@ -1,4 +1,3 @@
-const FriendlyErrorsWebpackPlugin = require('friendly-errors-webpack-plugin')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const webpack = require('webpack')
 const path = require("path")
@@ -12,24 +11,21 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /\.jsx?$/,
+        test: /\.js$/,
         exclude: /node_modules/,
-        loader: 'babel-loader',
-        options: {
-          cacheDirectory: true
+        use: {
+          loader: 'babel-loader',
+          options: {
+            presets: [ '@babel/preset-env' ]
+          }
         }
       }
     ]
   },
   devServer: {
-    contentBase: path.join(__dirname, "dist"),
-    compress: true,
-    stats: "errors-only",
-    open: false,
-    overlay: true,
     port: 3000,
-    quiet: true,
-    clientLogLevel: "error"
+    clientLogLevel: "error",
+    stats: "errors-only"
   },
   plugins: [
     new HtmlWebpackPlugin({
@@ -40,7 +36,6 @@ module.exports = {
       template: './index.html',
       filename: 'index.html'
     }),
-    new webpack.HotModuleReplacementPlugin(),
-    new FriendlyErrorsWebpackPlugin()
+    new webpack.HotModuleReplacementPlugin()
   ]
 }
