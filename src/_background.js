@@ -1,9 +1,9 @@
 import Tone from 'Tone'
 
 const envelope = {
-  attack: 1,
-  decay: 0,
-  sustain: 1,
+  attack: 2,
+  decay: 1,
+  sustain: 0.7,
   release: 1
 }
 
@@ -67,9 +67,6 @@ const reverb = new Tone.Freeverb({
   dampening: 300
 })
 
-const chorus = new Tone.Chorus({
-  frequency: 0.2
-})
 const left = new Tone.Panner(-0.5)
 const right = new Tone.Panner(0.5)
 
@@ -88,8 +85,7 @@ bassRight.connect(right)
 left.connect(reverb)
 right.connect(reverb)
 
-reverb.connect(chorus)
-chorus.connect(compre)
+reverb.connect(compre)
 
 const gain = new Tone.Volume(-28)
 

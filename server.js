@@ -3,7 +3,7 @@ require('dotenv').config()
 const Twitter = require('twitter-lite')
 const { hashtags } = require('./config')
 
-const PORT = 8085
+const PORT = process.env.PORT || 8085
 const server = require('http').createServer()
 const io = require('socket.io')(server)
 
@@ -19,9 +19,17 @@ const client = new Twitter({
   access_token_secret: process.env.ACCESS_SECRET
 })
 
-client.stream('statuses/filter', { track: hashtags.join() })
-  .on("start", () => console.log("start twitter stream"))
-  .on("data", data => io.emit('tweet', data))
-  .on("ping", () => console.log("ping"))
-  .on("error", error => console.log("error", error))
-  .on("end", () => console.log("end twitter stream"))
+const init = () => {
+  client.stream('statuses/filter', { track: hashtags.join() })
+    .on("start", () => console.log("start twitter stream"))
+    .on("data", data => io.emit('tweet', data))
+    .on("ping", () => console.log("ping"))
+    .on("error", error => {
+        console.log("error", error)
+        client.stream.destroy()
+        setTimeout(() => init(), 2000)
+    })
+    .on("end", () => console.log("end twitter stream"))
+}
+
+init()

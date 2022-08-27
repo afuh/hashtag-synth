@@ -1,7 +1,7 @@
-const FriendlyErrorsWebpackPlugin = require('friendly-errors-webpack-plugin')
+require('dotenv').config()
 const HtmlWebpackPlugin = require('html-webpack-plugin')
-const webpack = require('webpack')
 const path = require("path")
+const webpack = require('webpack');
 
 module.exports = {
   entry: './src/start.js',
@@ -12,7 +12,7 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /\.jsx?$/,
+        test: /\.js?$/,
         exclude: /node_modules/,
         loader: 'babel-loader',
         options: {
@@ -22,16 +22,14 @@ module.exports = {
     ]
   },
   devServer: {
-    contentBase: path.join(__dirname, "dist"),
-    compress: true,
-    stats: "errors-only",
-    open: false,
-    overlay: true,
-    port: 3000,
-    quiet: true,
-    clientLogLevel: "error"
+    port: 3000
   },
   plugins: [
+    new webpack.DefinePlugin({
+      'process.env': {
+        WSS_URL: JSON.stringify(process.env.WSS_URL)
+      }
+    }),
     new HtmlWebpackPlugin({
       title: 'Hashtag synth',
       minify: {
@@ -40,7 +38,5 @@ module.exports = {
       template: './index.html',
       filename: 'index.html'
     }),
-    new webpack.HotModuleReplacementPlugin(),
-    new FriendlyErrorsWebpackPlugin()
   ]
 }

@@ -1,5 +1,4 @@
 import Tone from 'Tone'
-import UnmuteButton from 'unmute'
 
 import { hashtags } from '../config.js'
 import HashSynth from './HashSynth'
@@ -14,12 +13,10 @@ Tone.Transport.bpm.value = 50
 Tone.Transport.start()
 
 new HashSynth ({
-  url: 'https://beathoven.axelfuhrmann.com',
+  url: process.env.WSS_URL,
   attack,
   hashtags
 }).init()
 
 background.connect(limit)
 melody.connect(limit)
-
-UnmuteButton()
